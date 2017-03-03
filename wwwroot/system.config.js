@@ -4,76 +4,63 @@
  *
  */
 
-(function(global) {
-    // wildcard paths
-    var paths = {
-        "*": "dist/*",
-        "n:*": "node_modules/*"
-    };
+(function (global) {
+	// wildcard paths
+	var paths = {
+		"*": "dist/*",
+		"n:*": "node_modules/*"
+	};
 
-    // map tells the System loader where to look for things
-    var map = {
-        "app": "app",
-        "test": "test",
-        "rxjs": "n:rxjs",
-        "@angular": "n:@angular",
-        "angular2-in-memory-web-api": "n:angular2-in-memory-web-api",
-        "@ssv": "n:@ssv",
-        "lodash": "n:lodash",
-        "ionic-angular": "n:ionic-angular",
-        "ionic-native": "n:ionic-native"
-    };
+	// map tells the System loader where to look for things
+	var map = {
+		"app": "app",
+		"test": "test",
+		"rxjs": "n:rxjs",
+		"@angular": "n:@angular",
+		"@ssv": "n:@ssv",
+		"lodash": "n:lodash",
+		"ionic-angular": "n:ionic-angular",
+	};
 
-    // packages tells the System loader how to load when no filename and/or no extension
-    var packages = {
-        "app": {
-            defaultExtension: "js"
-        },
-        "test": {
-            defaultExtension: "js"
-        },
-        "rxjs": {
-            defaultExtension: "js"
-        },
-        "angular2-in-memory-web-api": {
-            defaultExtension: "js"
-        },
-        "@ssv/ng2-core": {
-            main: "dist/amd/index.js",
-            defaultExtension: "js"
-        },
-        "ionic-angular": {
-            main: "commonjs/index.js",
-            defaultExtension: "js"
-        },
-        '@angular/core' : {main: 'bundles/core.umd.min.js'},
-        '@angular/compiler' : {main: 'bundles/compiler.umd.js'},
-        '@angular/common' : {main: 'bundles/common.umd.min.js'},
-        '@angular/forms' : {main: 'bundles/forms.umd.min.js'},
-        '@angular/http' : {main: 'bundles/http.umd.min.js'},
-        '@angular/platform-browser' : {main: 'bundles/platform-browser.umd.min.js'},
-        '@angular/platform-browser-dynamic' : {main: 'bundles/platform-browser-dynamic.umd.min.js'},
-        '@angular/router' : {main: 'bundles/router.umd.min.js'},
-    };
+	// packages tells the System loader how to load when no filename and/or no extension
+	var packages = {
+		"app": { defaultExtension: "js" },
+		"test": { defaultExtension: "js" },
 
-    var packageNames = [
-        "lodash",
-    ];
+		// angular
+		"@angular/core": { main: "bundles/core.umd.min.js" },
+		"@angular/compiler": { main: "bundles/compiler.umd.js" },
+		"@angular/common": { main: "bundles/common.umd.min.js" },
+		"@angular/forms": { main: "bundles/forms.umd.min.js" },
+		"@angular/http": { main: "bundles/http.umd.min.js" },
+		"@angular/platform-browser": { main: "bundles/platform-browser.umd.min.js" },
+		"@angular/platform-browser-dynamic": { main: "bundles/platform-browser-dynamic.umd.min.js" },
 
-    // add package entries for angular packages in the form "@angular/common": { main: "index.js", defaultExtension: "js" }
-    packageNames.forEach(function(pkgName) {
-        packages[pkgName] = { main: "index.js", defaultExtension: "js" };
-    });
+		// vendors
+		"raven-js": { main: "raven.min.js", defaultExtension: "js" },
+		"rxjs": { defaultExtension: "js" },
+		"ionic-angular": { main: "commonjs/index.js", defaultExtension: "js" },
+		"@ssv/ng2-core": { main: "dist/amd/index.js", defaultExtension: "js" },
+	};
 
-    var config = {
-        map: map,
-        packages: packages,
-        paths: paths
-    };
+	var packageNames = [
+		"lodash",
+	];
 
-    // filterSystemConfig - index.html"s chance to modify config before we register it.
-    if (global.filterSystemConfig) { global.filterSystemConfig(config); }
+	// add package entries for angular packages in the form "@angular/common": { main: "index.js", defaultExtension: "js" }
+	packageNames.forEach(function (pkgName) {
+		packages[pkgName] = { main: "index.js", defaultExtension: "js" };
+	});
 
-    System.config(config);
+	var config = {
+		map: map,
+		packages: packages,
+		paths: paths
+	};
+
+	// filterSystemConfig - index.html"s chance to modify config before we register it.
+	if (global.filterSystemConfig) { global.filterSystemConfig(config); }
+
+	System.config(config);
 
 })(this);

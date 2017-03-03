@@ -1,38 +1,35 @@
 import { NgModule } from "@angular/core";
 import { LocationStrategy, PathLocationStrategy } from "@angular/common";
-import { IonicModule, IonicApp } from "ionic-angular";
+import { IonicModule, IonicApp, DeepLinkConfig } from "ionic-angular";
 
-import { TabsPage } from "./pages/tabs/tabs";
-import { HomePage } from "./pages/home/home";
-import { AboutPage } from "./pages/about/about";
-import { ContactPage } from "./pages/contact/contact";
-import { deepLinkConfig } from "./shared/route.config";
-import { MyApp } from "./app";
+import { HomePage, HeroListPage, HeroDetailPage, HeroService } from "./pages/index";
+import { AppComponent } from "./app.component";
+import { routes } from "./app.routes";
 
 @NgModule({
 	declarations: [
-		MyApp,
-		TabsPage,
+		AppComponent,
 		HomePage,
-		ContactPage,
-		AboutPage
+		HeroListPage,
+		HeroDetailPage,
 	],
 	imports: [
-		IonicModule.forRoot(MyApp, null, deepLinkConfig)
+		IonicModule.forRoot(AppComponent, null, {
+			links: routes
+		} as DeepLinkConfig) // todo: @ionic add typing
 	],
 	bootstrap: [
 		IonicApp
 	],
 	entryComponents: [
-		TabsPage,
 		HomePage,
-		ContactPage,
-		AboutPage
+		HeroListPage,
+		HeroDetailPage,
 	],
 	providers: [
-		{ provide: LocationStrategy, useClass: PathLocationStrategy }
+		HeroService,
+		{ provide: LocationStrategy, useClass: PathLocationStrategy },
 	]
 })
-
 export class AppModule {
 }

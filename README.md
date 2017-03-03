@@ -1,5 +1,5 @@
 # ionic2-playground
-
+ionic2 experimental and playground
 
 # Getting started
 

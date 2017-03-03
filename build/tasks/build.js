@@ -52,12 +52,14 @@ gulp.task("compile:sass", () => {
 		.pipe(gulp.dest(`${paths.output.dist}/assets`));
 });
 
+
 // html
 gulp.task("html", (cb) => {
 	return runSeq(
 		["compile:html", "compile:index-html"],
 		cb);
 });
+
 
 gulp.task("compile:html", () => {
 	return gulp.src(paths.src.html)

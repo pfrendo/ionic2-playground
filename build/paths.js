@@ -23,9 +23,9 @@ module.exports = {
 	sass: {
 		includePaths: [
 			"./src/assets/styles",
-			"./node_modules/ionic-angular",
+			"./node_modules/ionic-angular/themes",
 			"./node_modules/ionicons/dist/scss",
-			]
+		]
 	},
 	doc: "./doc",
 	packageName: pkg.name
